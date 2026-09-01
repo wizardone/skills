@@ -1,0 +1,3 @@
+interface:
+  display_name: "Analyzer"
+  short_description: "Analysis a diff for complexity, spaghetti and smells"
