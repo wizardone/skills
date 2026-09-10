@@ -1,25 +1,24 @@
-description: 'Evals for skills'
+description: 'Evals for analyzer'
 prompts:
   - file://prompts/login.txt
 
 providers:
-  - id: openai:responses:gpt-5.6
+  - id: openai:codex-sdk
     config:
-      reasoning:
-        effort: 'max'
-      max_output_tokens: 8192
-      skills: ['analyzer']
+      sandbox_mode: read-only
+      enable_streaming: true
       working_dir: .
-  # Or setup models from other providers
-  # - anthropic:messages:claude-sonnet-4-6
-  # - google:gemini-3.1-pro-preview
 
 tests:
   - description: "Analyzer used"
     assert:
       - type: contains
-        value: "Analyzer"
-  - description: "Missing input type"
+        value: "## Analyzer"
+  - description: "Contains all headings of the analyzer"
     assert:
-      - type: contains
-        value: "Missing input type"
+      - type: contains-all
+        value:
+          - "Cyclomatic complexity"
+          - "Test coverage"
+          - "Spaghetti code"
+          - "Method signature"
