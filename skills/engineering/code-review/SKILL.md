@@ -54,7 +54,8 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 - **Message Chains**: long `a.b().c().d()` navigation the caller shouldn't depend on. → hide the walk behind one method on the first object.
 - **Middle Man**: a class or function that mostly just delegates onward. → cut it, call the real target direct.
 - **Refused Bequest**: a subclass or implementer that ignores or overrides most of what it inherits. → drop the inheritance, use composition.
-- **Long Method**: a function that has grown too long to be easily understood (use 10 lines as a benchmark). -> suggest breaking it down
+- **Long Method**: a function that has grown too long to be easily understood (use 10 lines as a benchmark). -> suggest breaking it down.
+- **Change Coupling**: a function or a module needs to change along with another function or module. -> suggest using a single new module.
 
 ### 4. Spawn both sub-agents in parallel
 

@@ -1,0 +1,25 @@
+description: 'Evals for skills'
+prompts:
+  - file://prompts/login.txt
+
+providers:
+  - id: openai:responses:gpt-5.6
+    config:
+      reasoning:
+        effort: 'max'
+      max_output_tokens: 8192
+      skills: ['analyzer']
+      working_dir: .
+  # Or setup models from other providers
+  # - anthropic:messages:claude-sonnet-4-6
+  # - google:gemini-3.1-pro-preview
+
+tests:
+  - description: "Analyzer used"
+    assert:
+      - type: contains
+        value: "Analyzer"
+  - description: "Missing input type"
+    assert:
+      - type: contains
+        value: "Missing input type"
