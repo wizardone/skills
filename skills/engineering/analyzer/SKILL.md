@@ -11,6 +11,8 @@ After a piece of code (it can be a single function or an entire module) is writt
 - **Spaghetti code** - is there tangled, hard to follow control flow.
 - **Method signature** - are there any outdated method signatures, documentation, JSDOCs or types.
 
+Present the report under the `## Analyzer` heading. The above listed checks should be listed as subheadings. If nothing is found for one of the analyzer checks, state this explicitly
+
 Don't assume what you need to analyze, make sure you know. It should be a plain `diff` or a link to a `PR` in Github. If none is provided ask for clarifications
 If the result is not sasitfying, tell the user.
 
