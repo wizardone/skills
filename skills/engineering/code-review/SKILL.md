@@ -79,6 +79,8 @@ Present the two reports under `## Standards` and `## Spec` headings, verbatim or
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes: that's the reranking the separation exists to prevent.
 
+If there are no items under either of the reports run the `analyzer` skill as a next step.
+
 ## Why two axes
 
 A change can pass one axis and fail the other:
