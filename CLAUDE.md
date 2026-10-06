@@ -1,3 +1,10 @@
+### Maintaining git order
+The repository has two remotes: `origin` and `upstream`. `upstream` is the original, `origin` is the local remote repository, which includes all the custom implementations of the customer. Locally there is only a `main` branch. When maintaining `git` order the following should happen
+* Fetch everything from `upstream` and merge in the local `main` branch. For any conflicts:
+  * Changes in any of the symlinked skills always take precedence over what is in `upstream`
+  * Changes in `origin` always take precedence over changes in `upstream`
+  * For anything else use `upstream`
+
 Skills are organized into bucket folders under `skills/`:
 
 - `engineering/`: daily code work
