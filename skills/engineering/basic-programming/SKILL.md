@@ -1,7 +1,6 @@
 ---
 name: basic-programming
-description: Basic general guidelines for programming/writing code. It operates at a ground level, below architecture, focusing on pragmatic
-engineering, pure code and good guidelines.
+description: Basic general guidelines for programming/writing code. It operates at a ground level, below architecture, focusing on pragmatic engineering, pure code and good guidelines.
 ---
 
 ### Usage
