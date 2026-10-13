@@ -15,7 +15,7 @@ When prompted to write a piece of code always start by researching the existing 
 
 ## Key principles
 When writing a `piece of code` consider the following `soft` guidelines:
-**length** - how long is a piece of code. Preferrable a function should be no longer than 10 lines of code, a class of a module should be no longer than 100 lines of code. Consider how readable a piece of code is.
+**length** - how long is a piece of code. Preferrable a function should be no longer than 10 lines of code, a class or a module should be no longer than 100 lines of code. Consider how readable a piece of code is, before taking this into consideration. Some languages are more verbose than others.
 **naming** - use well formatted naming, which shows intent. Do not use specific provider names, rather more `generic` naming.
 **principles** - Keep It Simple Stupid (KISS) and Don't Repeat Yourself (DRY) are the two main principles, which should guide the code.
 **scope** - Do not go beyond the requested scope by the user, or the implementation document supplied. Always focus on making the minimal set of changes.
