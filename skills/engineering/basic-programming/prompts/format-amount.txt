@@ -1,0 +1,11 @@
+Use the basic-programming skill to write a typescript function `formatAmount`, which formats a number of cents as a dollar string, e.g. `123456` becomes `$1,234.56`. Do not write it to a file, print it in the response.
+
+The existing codebase writes functions like this:
+
+```ts
+/**
+ * Converts a date into an ISO date string without the time part.
+ * @param date - the date to convert
+ */
+export const toIsoDate = (date: Date): string => date.toISOString().slice(0, 10);
+```

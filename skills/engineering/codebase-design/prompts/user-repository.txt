@@ -1,0 +1,21 @@
+Apply the codebase-design skill to the following typescript module and suggest how to improve its design:
+
+```ts
+import { DynamoDBDocumentClient, GetCommand, PutCommand } from "@aws-sdk/lib-dynamodb";
+
+export class UserRepository {
+  constructor(private readonly client: DynamoDBDocumentClient, private readonly tableName: string) {}
+
+  getCommand(id: string): GetCommand {
+    return new GetCommand({ TableName: this.tableName, Key: { pk: `USER#${id}` } });
+  }
+
+  putCommand(user: { id: string; name: string }): PutCommand {
+    return new PutCommand({ TableName: this.tableName, Item: { pk: `USER#${user.id}`, ...user } });
+  }
+
+  send(command: GetCommand | PutCommand) {
+    return this.client.send(command);
+  }
+}
+```

@@ -1,0 +1,22 @@
+description: 'Evals for basic-programming'
+prompts:
+  - file://prompts/format-amount.txt
+
+providers:
+  - id: anthropic:claude-agent-sdk
+    config:
+      apiKeyRequired: false
+      setting_sources: ['user']
+      skills: ['basic-programming']
+      working_dir: .
+      path_to_claude_code_executable: '{{ env.HOME }}/.local/bin/claude'
+
+tests:
+  - description: "Documents the function arguments"
+    assert:
+      - type: contains
+        value: "@param"
+  - description: "Offers the code-review skill"
+    assert:
+      - type: icontains
+        value: "code-review"

@@ -1,0 +1,26 @@
+description: 'Evals for destroyer'
+prompts:
+  - file://prompts/migration-plan.txt
+
+providers:
+  - id: anthropic:claude-agent-sdk
+    config:
+      apiKeyRequired: false
+      setting_sources: ['user']
+      skills: ['destroyer']
+      working_dir: .
+      path_to_claude_code_executable: '{{ env.HOME }}/.local/bin/claude'
+
+tests:
+  - description: "Round asks numbered questions with a recommended answer"
+    assert:
+      - type: regex
+        value: "\\bQ1\\b"
+      - type: regex
+        value: "\\bQ2\\b"
+      - type: icontains
+        value: "recommend"
+  - description: "Round is limited to two questions"
+    assert:
+      - type: not-regex
+        value: "\\bQ3\\b"

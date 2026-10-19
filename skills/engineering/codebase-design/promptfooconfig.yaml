@@ -1,0 +1,26 @@
+description: 'Evals for codebase-design'
+prompts:
+  - file://prompts/user-repository.txt
+
+providers:
+  - id: anthropic:claude-agent-sdk
+    config:
+      apiKeyRequired: false
+      setting_sources: ['user']
+      skills: ['codebase-design']
+      working_dir: .
+      path_to_claude_code_executable: '{{ env.HOME }}/.local/bin/claude'
+
+tests:
+  - description: "Identifies the module as shallow"
+    assert:
+      - type: icontains
+        value: "shallow"
+  - description: "Uses the codebase-design vocabulary"
+    assert:
+      - type: icontains-any
+        value:
+          - "seam"
+          - "leverage"
+          - "locality"
+          - "deletion test"
