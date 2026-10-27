@@ -7,8 +7,9 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 - **Standards**: does the code conform to this repo's documented coding standards?
 - **Spec**: does the code faithfully implement the originating issue / spec?
+- **Volume**: does the code exceed what should be considered a good threshold of generated code?
 
-Both axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
+All axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
 The issue tracker should have been provided to you. If `docs/agents/issue-tracker.md` is missing, tell the user to run `/setup-matt-pocock-skills`.
 
@@ -57,7 +58,7 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 - **Long Method**: a function that has grown too long to be easily understood (use 10 lines as a benchmark). -> suggest breaking it down.
 - **Change Coupling**: a function or a module needs to change along with another function or module. -> suggest using a single new module.
 
-### 4. Spawn both sub-agents in parallel
+### 4. Spawn all sub-agents in parallel
 
 **Standards sub-agent prompt** should include:
 
@@ -73,9 +74,15 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 
 If the spec is missing, skip the Spec sub-agent and note this in the final report.
 
+**Volume sub-agent prompt** should include:
+
+- The full diff command and commit list.
+- A minimalistic, ephemeral and independent implementation of the changes to serve as a comparison.
+- The brief: "Report, all around code volume, (a) Is it possible to have a new implementation with a significant change in code volume and (b) can the volume of code be reduced by introducing simplifications". 
+
 ### 5. Aggregate
 
-Present the two reports under `## Standards` and `## Spec` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings, because the two axes are deliberately separate (see _Why two axes_).
+Present the three reports under `## Standards`, `## Spec` and `## Volume` headings, verbatim or lightly cleaned. Do **not** merge or rerank findings, because the two axes are deliberately separate (see _Why two axes_).
 
 End with a one-line summary: total findings per axis, and the worst issue _within each axis_ (if any). Don't pick a single winner across axes: that's the reranking the separation exists to prevent.
 
