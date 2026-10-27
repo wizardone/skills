@@ -11,7 +11,7 @@ Two-axis review of the diff between `HEAD` and a fixed point the user supplies:
 
 All axes run as **parallel sub-agents** so they don't pollute each other's context, then this skill aggregates their findings.
 
-The issue tracker should have been provided to you. If `docs/agents/issue-tracker.md` is missing, tell the user to run `/setup-matt-pocock-skills`.
+The issue tracker should have been provided to you. If not, tell the user to run `/setup-matt-pocock-skills`.
 
 ## Process
 
@@ -59,6 +59,8 @@ Each smell reads *what it is* → *how to fix*; match it against the diff:
 - **Change Coupling**: a function or a module needs to change along with another function or module. -> suggest using a single new module.
 
 ### 4. Spawn all sub-agents in parallel
+
+Issue both sub-agent calls together, in the foreground, and aggregate the reports they return.
 
 **Standards sub-agent prompt** should include:
 
